@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Sans+TC&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: black;
+    font-size: 20px;
+    font-family: 'Noto Sans', 'Noto Sans TC', sans-serif;
+}
+
+.screen {
+    display: flex;
+    height: 100vh;
+}
+
+/* 主題 */
+/* 首頁 */
+.content #root{
+	color: white;
+	background-color: black;
+	width: 100%;
+	text-align: center;	 
+}
+#shift td {
+    background-color: rgba(202,237,235, .5)
+}
+
+/* 系統字體色 */
+* {
+    color: black;
+}
+/* 系統背景色 */
+.screen {
+    background-color: rgb(202,237,235);
+    background-image: url("../images/background.png");
+}
+/* 選單 */
+/* 選單色 */
+.menu {
+    background-color: rgba(48,29,47, .7);
+}
+/* 選單LOGO色 */
+.menu .logo {
+    background-color: rgba(3,112,233, .7);
+}
+/* 選單字體色 */
+.menu li a, .menu li span {
+    color: #ffffff;
+}
+/* 選單底部色 */
+footer {
+	background-color: rgba(3,112,233, .7);
+}
+
+/* 首頁 */
+/* 時間背景色 */
+#timeShow {
+    background-color: rgba(254,253,251, .5);
+}
+
+/* 內容 */
+/* 標題色 */
+.title {
+    background-color: rgba(3,112,233, .7);
+}
+/* 內容框背景色 */
+.box {
+    background-color: rgba(254,253,251, .7);
+}
+/* 按鈕色 */
+.btn {
+    background-color: rgba(250,215,155, .7);
+}
+.null_btn {
+	background-color: rgba(202,237,235, .7)
+}
+/* 表格標題色 */
+th {
+    background-color: rgba(202,237,235, .7);
+}
+/* 表格框線色 */
+th, td{
+    border-color: rgb(202,237,235);
+}
+textarea{
+    background-color: rgba(255,255,255, .7);
+	border-color: rgb(202,237,235);
+}
+/* 表單輸入欄框線 */
+input {
+    background-color: rgba(255,255,255, .7);
+    border-color: rgb(202,237,235);
+}
+
+/* 錯誤 */
+/* 錯誤標題色 */
+.error_title {
+    background-color: rgba(255,0,0, .7);
+}
+/* 錯誤文字色 */
+.error_font {
+    color: rgb(255,0,0);
+}

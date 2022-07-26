@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <title>英文拼字遊戲</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        background: url(./images/image1.jpg);
+        height: 100vh;
+        cursor : url('./images/arrow64.ico'), pointer;
+    }
+
+    /* container 寬度 */
+    .bgc-container {
+        width: 70%;
+        height: 80%;
+        background: url(./images/image2.jpg);
+        background-size: cover;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* 開始畫面 目前未使用 */
+    .start-wall {
+        width: 900px;
+        height: 600px;
+        top: 0;
+        left: 0;
+        position: absolute;
+        background: url(./images/690648.jpg);
+        background-size: cover;
+        transform: scaleY(1.1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    /* 開始按鈕 目前未使用 */
+    .start-wall button {
+        width: 200px;
+        height: 100px;
+        line-height: 30px;
+        font-size: 1.3rem;
+    }
+
+    /* 氣球的 container */
+    .balloon-container {
+        width: 100%;
+        height: 100%;
+        /* background-color: white; */
+        top: 600px;
+        left: 0;
+        position: absolute;
+        transition: 0.3s; /* 玩的時候是在 javasscript 程式設定*/
+    }
+
+    /* result score */
+    .result-wrap {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+    /* .result-wrap a {
+        position: relative;
+    } */
+    .result-wrap a:hover {
+        opacity: 0.3;
+    }
+
+    .result {
+        display: inline-block;
+        width: 100%;
+        /* height: 50px; */
+        position: absolute;
+        /* font-weight: 700; */
+        left: 50%;
+        bottom: 0;
+        font-size: 2.5rem;
+        background-color: #fff;
+        transform: translateX(-50%);
+    }
+
+    /* 重新開始按鈕 */
+    .refreshBtn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+    }
+
+    /* 重新開始按鈕大小 */
+    .btn-lg {
+        width: 500px;
+        height: 100px;
+    }
+
+    /* 重新開始文字 */
+    .result-txt {
+        display: inline-block;
+        font-weight: 700;
+        font-size: 2.5rem;
+        color: rgb(0, 0, 0);
+    }
+
+    .balloon-wrap {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    /* 子堯的大氣球 */
+    .balloon {
+        width: 150px;
+        height: 200px;
+        background: url(./images/balloon-blue_adobe_express.png);
+        background-size: cover;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* opacity: 0.7; */
+    }
+
+    /* 子堯的大氣球的文字 */
+    .balloon span {
+        color: white;
+        font-size: 1.5rem;
+        font-weight: 700;
+        transform: translateX(60%) translateY(-50%);
+    }
+
+    /* 放答案的提示圖片 */
+    .ansPic {
+        width: 180px;
+        height: 400px;
+        /* border: solid 3px red; */
+        left: 10px;
+        top: 10px;
+        position: relative;
+        background: url(./images/lion.jpg) no-repeat;
+        background-size: 100%; /*只設寬度, 高度會自動調整*/
+        overflow: hidden;
+        
+    }
+
+    /* 結果對錯的圈叉圖 */
+    .resultImg {
+        width: 80px;
+        height: 80px;
+    }
+
+    /* 答錯時顯示的答案提示文字 */
+    .hintTxt {
+        /* position: absolute;
+        right: 10px; */
+        padding-left: 100px;
+        color: rgb(28, 240, 0);
+    }
+
+    .backBtn{
+        font-size:5vmin;
+        width: auto;
+        margin: auto; 
+        font-family: 清松手寫體1;
+        font-weight: 900;
+    }
+
+    .backarea{
+        margin-left: 5%;
+    }
+</style>
+
+<body class=" d-flex justify-content-center align-items-center">
+    <div class="bgc-container">
+        <div class="result-wrap">
+            <div class="ansPic">
+                <!-- put answer picture -->
+            </div>
+            <!-- <a href="http://localhost:8080/balloon.html" class="btn btn-outline-dark btn-lg refreshBtn d-none">Refresh Game</a> -->
+            <a href="javascript:location.reload()" class="btn btn-outline-dark btn-lg refreshBtn d-none">
+                <img class="resultImg" id="resultImg" src="">  Refresh Game
+            </a>
+            <div class="result">
+                &nbsp&nbsp&nbspresult :
+                <div class="result-txt"></div>
+            </div>
+        </div>
+        <!-- <div class="start-wall">
+            <button onclick="startGame()" class="btn btn-outline-light">start</button>
+        </div> -->
+        <div class="balloon-container">
+            <div class="balloon-wrap">
+                <!-- <div class="balloon"></div> -->
+            </div>
+        </div>
+    </div>
+    <div class="backarea">
+        <input type="button" class="backBtn btn btn-outline-light" onclick="history.back()" value="返回首頁"></input></div>
+    <script src="js/lib/jquery-3.6.0.min.js"></script>
+    <script>
+        // sleep 函數用來等待
+        function sleep(milliseconds) 
+        { 
+        var start = new Date().getTime(); 
+        while(1)
+            if ((new Date().getTime() - start) > milliseconds)
+                break;
+        }
+
+        // ---for test---------
+        // let wordArr = [
+        //     'asdfghjklzxcv', 'asdfghjklzxcv', ''
+        // ]
+        // ---單字 array------
+        let wordArr = [
+            'girl', 'boy', 'cat', 'dog', 'tree', 'lion', 'giraffe', 'zebra'
+        ]
+        
+        let randomBalloon = Math.floor((Math.random() * wordArr.length));
+        // console.log("wordArr: " + wordArr[randomBalloon].split(''));
+        let ansStr = wordArr[randomBalloon];
+        let ansImgPath = "url(./images/" + ansStr + ".png) no-repeat";
+        // 重設圖檔路徑之後, background-size 會跑掉, 所以需要再重新設定一次
+        $('.ansPic').css("background",ansImgPath).css("background-size","100%");
+        // console.log("ansStr= " + ansStr);
+        const charArr = wordArr[randomBalloon].split('');
+        // console.log(charArr);
+        // console.log("typeof charArr: " + typeof charArr)
+
+        // create a position array
+        // 氣球位置陣列(5列*11欄, 給予編號0~54)
+        let positionArr = [];
+        for (let i=0;i<(5*11);i++) {
+            positionArr[i] = i;
+        }
+        // console.log("positionArr= " + positionArr);
+
+        function startGame() {
+            // balloonMove();
+            let resultTxt = "";
+            let tempTxt = "";
+            // 隨機選三種氣球顏色中的一個顏色
+            let balloonColor = [1,2,3][Math.floor(Math.random()*3)];
+            // 放氣球圖案路徑檔名的變數
+            let balloonImg = "";
+            topArr = [0,120,240,360,480]; // 5 個隨選列座標
+            leftArr = [0,75,150,225,300,375,450,525,600,675,750]; // 11 個隨選欄座標
+
+
+            charArr.map((el, ind) => {
+                // ------ 產生隨機位置方法1 ------
+                // let randomTop = Math.floor((Math.random() * 500));// 隨機 top value
+                // let randomLeft = Math.floor((Math.random() * 800)); // 隨機 left value
+                // ------ 產生隨機位置方法2 ------
+                // let randomTop = [0,120,240,360,480][Math.floor((Math.random() * 5))];// 隨機 top value
+                // let randomLeft = [0,75,150,225,300,375,450,525,600,675,750][Math.floor((Math.random() * 11))]; // 隨機 left value
+                //------產生隨機位置方法3(避免圖案重疊)  ------
+                // console.log("positionArr.length= ",positionArr.length)
+                idx = Math.floor(Math.random() * positionArr.length);
+                positionNum = positionArr[idx];
+                // 使用過的位置要從陣列移除(包含其左右相鄰位置), 以避免重疊
+                if (idx == 0) {
+                    positionArr.splice(idx,2);
+                } else if (idx == (positionArr.length-1)) {
+                    positionArr.splice(idx-1,2);
+                } else {
+                    positionArr.splice(idx-1,3);
+                }
+                
+                // console.log("positionNum= " + positionNum);
+                let randomTop = topArr[Math.floor(positionNum / 11)];
+                let randomLeft = leftArr[positionNum % 11];
+
+                $('.balloon-wrap').append(`<div class="balloon"><span>${el.toLocaleUpperCase()}</span></div>`);
+                // console.log("el= " + el);
+                // console.log("ind= " + ind);
+                $('.balloon').last().css('top', randomTop);
+                $('.balloon').last().css('left', randomLeft);
+                // set balloon color
+                if (balloonColor == 1) {
+                    balloonImg = "url(./images/balloon-blue_adobe_express.png) no-repeat";
+                    balloonColor = 2
+                } else if (balloonColor == 2) {
+                    balloonImg = "url(./images/balloon-red_adobe_express.png) no-repeat";
+                    balloonColor = 3;
+                } else {
+                    balloonImg = "url(./images/balloon-green_adobe_express.png) no-repeat";
+                    balloonColor = 1;
+                }
+                // 重設圖檔路徑之後, background-size 會跑掉, 所以需要重設一次
+                $('.balloon').last().css("background", balloonImg).css("background-size","cover");
+
+            })
+            for (let i of $('.balloon')) {
+                // console.log(i);
+                $(i).click((e) => {
+                    // console.log($(e.currentTarget).children()[0].innerText);
+                    e.currentTarget.remove();
+                    tempTxt = $(e.currentTarget).children()[0].innerText;
+                    // console.log("tempTxt= " + tempTxt);
+                    $('.result-txt').append(`<span>${tempTxt}</span>`);
+                    resultTxt = resultTxt + tempTxt;
+                    // console.log("resultTxt= " + resultTxt);
+                    // console.log(ansStr.toLocaleUpperCase());
+                    if ($('.balloon').length === 0) {
+                        ansStr = ansStr.toLocaleUpperCase();
+                        if (resultTxt == ansStr) {
+                            document.getElementById("resultImg").setAttribute("src","images/OK.png");
+                        } else {
+                            document.getElementById("resultImg").setAttribute("src","images/NO.png");
+                            $('.result-txt').append(`<span class="hintTxt">ans : ${ansStr}</span>`);
+                        }
+                        $('.balloon-container').remove();
+                        $('.refreshBtn').removeClass('d-none');
+                    }
+                })
+            }
+            // console.log($('.balloon'));
+            $('.start-wall').remove();
+            balloonMove();
+        }
+
+        function done() {
+            console.log("iterations: " + i);
+        }
+        // let id = setInterval(balloonMove,100);
+        // 氣球 container 往上移動 setting
+        const balloonMove = (e) => {
+            $('.balloon-container').css('top', '-=25px');
+            console.log($('.balloon-container').css('top'));
+            //設定氣球飄移速度
+            $('.balloon-container').css('transition','0.4s'); 
+
+            if (parseInt($('.balloon-container').css('top')) < -600) {
+                
+                $('.balloon-container').css('transition','none');
+                
+                $('.balloon-container').css('top', '600px');
+                
+                // return done();
+            }
+            // if (parseInt($('.balloon-container').css('top')) < -1100) {
+            //     $('.balloon-container').remove();
+            //     // window.location = 'http://127.0.0.1:5500/balloon.html';
+            // }
+            setTimeout(balloonMove, 100);
+
+        }
+        startGame();
+
+    </script>
+</body>
+
+</html>

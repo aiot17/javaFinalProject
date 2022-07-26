@@ -1,0 +1,66 @@
+.content {
+	width: 84%;
+	display: flex;
+	flex-direction: column;
+}
+
+.title {
+	width: 90%;
+	margin: 3% auto 0 auto;
+	padding-left: 2%;
+	font-size: 24px;
+	line-height: 2em;
+	text-align: left;
+	border-radius: 5px;
+	box-shadow: 10px 10px 10px grey;
+}
+
+.box {
+	width: 90%;
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto 5% auto;
+	padding: 3%;
+	border-radius: 5px;
+	box-shadow: 10px 10px 10px grey;
+	overflow: auto;
+}
+
+.box .btn {
+	width: 280px;
+	padding: 1%;
+	border: none;
+	border-radius: 5px;
+}
+
+.box td .btn {
+	width: 150px;
+}
+
+a {
+	text-decoration: none;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+th {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+td {
+	padding: 10px 3px 10px 3px;
+	text-align: center;
+	border-width: 2px;
+	border-bottom-style: solid;
+}
+
+input {
+  width: 95%;
+  padding-left: 2%;
+  border-radius: 5px;
+  border-width: 1px;
+  border-style: solid;
+}

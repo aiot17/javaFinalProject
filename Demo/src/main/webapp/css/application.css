@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Sans+TC&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	color: black;
+	font-size: 6vmin;
+	font-family: cwTeXYen, sans-serif;
+}
+
+.screen {
+    display: flex;
+    height: 100vh;
+}
+
+/* 瞼D� */
+/* 穡t簡�字�怏污� */
+* {
+    color: black;
+}
+/* 穡t簡�背織繙礎璽 */
+.screen {
+    background-color: rgb(202,237,235);
+    background-image: url("../images/background.png");
+}
+/* 聶簿糧疆 */
+/* 聶簿糧疆礎璽 */
+.menu {
+    background-color: rgba(48,29,47, .7);
+}
+/* 聶簿糧疆LOGO礎璽 */
+.menu .logo {
+    background-color: rgba(3,112,233, .7);
+}
+/* 聶簿糧疆礎r�怏污� */
+.menu li a, .menu li span {
+    color: #ffffff;
+}
+/* 聶簿糧疆穢糧糧癒礎璽 */
+footer {
+	background-color: rgba(3,112,233, .7);
+}
+
+/* 簫繙簫繞 */
+/* 簧�黑¯背織繙礎璽 */
+#timeShow {
+    background-color: rgba(254,253,251, .5);
+}
+
+/* 瞻繙簧e */
+/* 翹�礎璽 */
+.title {
+    background-color: rgba(3,112,233, .7);
+    text-align: center;
+}
+/* 瞻繙簧e簧�背織繙礎璽 */
+.box {
+    background-color: rgba(254,253,251, .7);
+}
+/* 竄繹繞s礎璽 */
+.btn {
+    background-color: rgba(250,215,155, .7);
+}
+/* 穠穩簧疆翹�礎璽 */
+th {
+    background-color: rgba(202,237,235, .7);
+}
+/* 穠穩簧疆簧�線礎璽 */
+th, td{
+    border-color: rgb(202,237,235);
+}
+textarea{
+    background-color: rgba(255,255,255, .7);
+	border-color: rgb(202,237,235);
+}
+/* 穠穩糧疆聶矇瞻J�汕捌線 */
+input {
+    background-color: rgba(255,255,255, .7);
+    border-color: rgb(202,237,235);
+}
+
+/* 聶羅罈~ */
+/* 聶羅罈~翹�礎璽 */
+.error_title {
+    background-color: rgba(255,0,0, .7);
+}
+/* 聶羅罈~瞻疇礎r礎璽 */
+.error_font {
+    color: rgb(255,0,0);
+}
